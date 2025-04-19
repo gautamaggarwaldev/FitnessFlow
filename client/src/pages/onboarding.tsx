@@ -16,6 +16,8 @@ import ParallaxSection from "@/components/shared/parallax-section";
 import { pageVariants, cardVariants } from "@/lib/animation";
 
 const formSchema = z.object({
+  username: z.string().min(3, { message: "Username must be at least 3 characters" }),
+  password: z.string().min(6, { message: "Password must be at least 6 characters" }),
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   age: z.coerce.number().min(16, { message: "You must be at least 16 years old" }).max(100),
   gender: z.enum(["Male", "Female", "Non-binary"]),
@@ -35,6 +37,8 @@ export default function Onboarding() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      username: "",
+      password: "",
       name: "",
       age: undefined,
       gender: undefined,
@@ -69,6 +73,7 @@ export default function Onboarding() {
     // Create user profile
     const userProfile = {
       id: 1,
+      username: data.username,
       name: data.name,
       age: data.age,
       gender: data.gender,
@@ -118,6 +123,50 @@ export default function Onboarding() {
 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <motion.div
+                    variants={cardVariants}
+                    initial="initial"
+                    animate="animate"
+                    transition={{ delay: 0.05 }}
+                  >
+                    <FormField
+                      control={form.control}
+                      name="username"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Username</FormLabel>
+                          <FormControl>
+                            <Input placeholder="username123" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </motion.div>
+                  
+                  <motion.div
+                    variants={cardVariants}
+                    initial="initial"
+                    animate="animate"
+                    transition={{ delay: 0.05 }}
+                  >
+                    <FormField
+                      control={form.control}
+                      name="password"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Password</FormLabel>
+                          <FormControl>
+                            <Input type="password" placeholder="••••••" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </motion.div>
+                </div>
+                
                 <motion.div
                   variants={cardVariants}
                   initial="initial"
