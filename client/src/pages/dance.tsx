@@ -111,7 +111,7 @@ export default function Dance() {
       intervalId = setInterval(() => {
         setDuration(prev => prev + 1);
         setCaloriesBurned(prev => prev + 1);
-        setBpm(prev => Math.floor(prev + Math.random() * 2 - 1));
+        setBpm(prev => Math.max(60, Math.min(180, prev + Math.floor(Math.random() * 3 - 1))));
         
         // Update move counter every 15 seconds
         moveTimer++;

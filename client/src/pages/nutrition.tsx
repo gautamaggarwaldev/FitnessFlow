@@ -184,14 +184,14 @@ export default function Nutrition() {
         {/* Recipe Suggestions */}
         <motion.div variants={listVariants}>
           <div className="flex justify-between items-center mb-6">
-            <h3 className="font-medium">Soulful Recipes For You</h3>
+            <h3 className="font-medium text-accent">Soulful Recipes For You</h3>
             <Button variant="link" className="text-primary flex items-center text-sm">
               <span>View All</span>
               <i className='bx bx-right-arrow-alt ml-1'></i>
             </Button>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 text-accent gap-6">
             {RECIPES.map(recipe => (
               <RecipeCard 
                 key={recipe.id} 

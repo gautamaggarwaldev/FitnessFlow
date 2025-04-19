@@ -43,23 +43,23 @@ function App() {
             <Onboarding />
           </div>
           
-          <h2 className="text-2xl font-bold mt-10 mb-6 text-center">2. Dashboard & Analytics</h2>
+          <h2 className="text-2xl font-bold mt-10 mb-6 text-center text-primary"> Dashboard & Analytics</h2>
           <div className="mb-16 rounded-xl shadow-lg">
             <Dashboard />
           </div>
           
-          <h2 className="text-2xl font-bold mt-10 mb-6 text-center">3. Dance & Fitness Tracking</h2>
+          <h2 className="text-2xl font-bold mt-10 mb-6 text-center text-primary"> Dance & Fitness Tracking</h2>
           <div className="mb-16 rounded-xl shadow-lg">
             <Dance />
           </div>
           
-          <h2 className="text-2xl font-bold mt-10 mb-6 text-center text-primary">4. Nutrition Planning</h2>
+          <h2 className="text-2xl font-bold mt-10 mb-6 text-center text-primary"> Nutrition Planning</h2>
           <div className="mb-16 rounded-xl shadow-lg">
             <Nutrition />
           </div>
           
-          <h2 className="text-2xl font-bold mt-10 mb-6 text-center">5. AI Fitness Coach</h2>
-          <div className="mb-16 rounded-xl shadow-lg">
+          <h2 className="text-2xl font-bold mt-10 mb-6 text-center text-primary"> AI Fitness Coach</h2>
+          <div className="mb-8 rounded-xl shadow-lg">
             <Chatbot />
           </div>
         </main>
