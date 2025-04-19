@@ -30,24 +30,40 @@ function App() {
   
   return (
     <TooltipProvider>
-      <div className="flex min-h-screen flex-col">
-        {user && <Navbar />}
-        <main className="flex-1">
-          <Switch>
-            <Route path="/" component={user ? Dashboard : Onboarding} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/dance" component={Dance} />
-            <Route path="/nutrition" component={Nutrition} />
-            <Route path="/chatbot" component={Chatbot} />
-            <Route component={NotFound} />
-          </Switch>
+      <div className="min-h-screen bg-neutral-50">
+        <Navbar />
+        <main className="container mx-auto px-4 py-16">
+          <div className="mb-8 bg-gradient-to-r from-primary/90 to-secondary/90 p-8 rounded-2xl text-white shadow-lg">
+            <h1 className="text-4xl font-bold mb-4">BeatBurn: All-in-One Fitness App</h1>
+            <p className="text-xl">Dance your way to fitness with AI-powered tracking, personalized nutrition, and more!</p>
+          </div>
+          
+          <h2 className="text-2xl font-bold mt-10 mb-6 text-center">1. Get Started - User Onboarding</h2>
+          <div className="mb-16 rounded-xl shadow-lg">
+            <Onboarding />
+          </div>
+          
+          <h2 className="text-2xl font-bold mt-10 mb-6 text-center">2. Dashboard & Analytics</h2>
+          <div className="mb-16 rounded-xl shadow-lg">
+            <Dashboard />
+          </div>
+          
+          <h2 className="text-2xl font-bold mt-10 mb-6 text-center">3. Dance & Fitness Tracking</h2>
+          <div className="mb-16 rounded-xl shadow-lg">
+            <Dance />
+          </div>
+          
+          <h2 className="text-2xl font-bold mt-10 mb-6 text-center">4. Nutrition Planning</h2>
+          <div className="mb-16 rounded-xl shadow-lg">
+            <Nutrition />
+          </div>
+          
+          <h2 className="text-2xl font-bold mt-10 mb-6 text-center">5. AI Fitness Coach</h2>
+          <div className="mb-16 rounded-xl shadow-lg">
+            <Chatbot />
+          </div>
         </main>
-        {user && (
-          <>
-            <Footer />
-            <MobileNav />
-          </>
-        )}
+        <Footer />
       </div>
       <Toaster />
     </TooltipProvider>

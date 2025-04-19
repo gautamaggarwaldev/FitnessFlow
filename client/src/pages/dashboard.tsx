@@ -82,7 +82,26 @@ export default function Dashboard() {
   const [calorieData, setCalorieData] = useState<CalorieData[]>([]);
   const [workoutData, setWorkoutData] = useState<WorkoutData[]>([]);
   const [stepsData, setStepsData] = useState<any[]>([]);
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(60); // Default progress for demo
+  
+  // Create a demo user if none exists
+  const demoUser = user || {
+    id: 999,
+    username: "demo_user",
+    name: "Sarah Smith",
+    age: 28,
+    gender: "Female" as const,
+    height: 165,
+    weight: 62,
+    goal: "Weight Loss",
+    danceStyle: "Zumba",
+    bmi: 22.8,
+    bmr: 1388,
+    calorieGoal: 1800,
+    caloriesBurned: 547,
+    caloriesConsumed: 1230,
+    profileImage: undefined
+  };
 
   useEffect(() => {
     // Load activities and data
@@ -92,11 +111,10 @@ export default function Dashboard() {
     setStepsData(MOCK_STEPS_DATA);
     
     // Calculate progress (calories burned / daily goal)
-    if (user) {
-      const dailyGoal = 900; // Sample daily exercise goal in calories
-      const percentage = Math.min(100, Math.round((user.caloriesBurned / dailyGoal) * 100));
-      setProgress(percentage);
-    }
+    const dailyGoal = 900; // Sample daily exercise goal in calories
+    const burnedCals = user?.caloriesBurned || demoUser.caloriesBurned;
+    const percentage = Math.min(100, Math.round((burnedCals / dailyGoal) * 100));
+    setProgress(percentage);
   }, [user]);
 
   const getInitials = (name: string) => {
@@ -106,20 +124,11 @@ export default function Dashboard() {
       .join('')
       .toUpperCase();
   }
-
-  if (!user) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="text-center">
-          <div className="mb-4 h-12 w-12 animate-spin rounded-full border-b-2 border-t-2 border-primary mx-auto"></div>
-          <p className="text-lg font-medium">Loading dashboard data...</p>
-        </div>
-      </div>
-    );
-  }
   
-  // For debugging
-  console.log("User in dashboard:", user);
+  console.log("Dashboard rendering with:", { user: user || demoUser });
+
+  // Use demo user if no real user is available
+  const displayUser = user || demoUser;
 
   return (
     <motion.div
@@ -127,9 +136,9 @@ export default function Dashboard() {
       animate="animate"
       exit="exit"
       variants={pageVariants}
-      className="py-20 page-transition"
+      className="bg-white rounded-xl shadow-lg p-6"
     >
-      <div className="container mx-auto px-4 pt-16">
+      <div className="container mx-auto">
         <div className="flex flex-col md:flex-row items-start">
           {/* Sidebar */}
           <div className="w-full md:w-1/4 mb-6 md:mb-0 md:pr-6">
@@ -139,14 +148,14 @@ export default function Dashboard() {
             >
               <div className="flex items-center space-x-4 mb-6">
                 <Avatar className="w-16 h-16 border-2 border-primary">
-                  <AvatarImage src={user.profileImage} />
+                  <AvatarImage src={displayUser.profileImage} />
                   <AvatarFallback className="bg-primary/20 text-primary text-xl">
-                    {getInitials(user.name)}
+                    {getInitials(displayUser.name)}
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <h3 className="font-poppins font-bold text-lg">{user.name}</h3>
-                  <p className="text-neutral-500 text-sm">{user.goal}</p>
+                  <h3 className="font-poppins font-bold text-lg">{displayUser.name}</h3>
+                  <p className="text-neutral-500 text-sm">{displayUser.goal}</p>
                 </div>
               </div>
               
@@ -154,19 +163,19 @@ export default function Dashboard() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-sm">BMI</span>
-                  <span className="font-medium">{user.bmi}</span>
+                  <span className="font-medium">{displayUser.bmi}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm">Daily Calorie Goal</span>
-                  <span className="font-medium">{formatNumber(user.calorieGoal)} kcal</span>
+                  <span className="font-medium">{formatNumber(displayUser.calorieGoal)} kcal</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm">Burned Today</span>
-                  <span className="font-medium text-secondary">{formatNumber(user.caloriesBurned)} kcal</span>
+                  <span className="font-medium text-secondary">{formatNumber(displayUser.caloriesBurned)} kcal</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm">Consumed Today</span>
-                  <span className="font-medium text-primary">{formatNumber(user.caloriesConsumed)} kcal</span>
+                  <span className="font-medium text-primary">{formatNumber(displayUser.caloriesConsumed)} kcal</span>
                 </div>
               </div>
               
@@ -175,7 +184,7 @@ export default function Dashboard() {
                 <Progress value={progress} className="h-3" />
                 <div className="flex justify-between text-sm mt-2">
                   <span>0 kcal</span>
-                  <span>{user.caloriesBurned}/900 kcal</span>
+                  <span>{displayUser.caloriesBurned}/900 kcal</span>
                 </div>
               </div>
             </motion.div>
@@ -187,18 +196,18 @@ export default function Dashboard() {
             >
               <h3 className="font-medium mb-4">Quick Actions</h3>
               <div className="space-y-3">
-                <Link href="/dance" className="flex items-center p-3 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors">
+                <div className="flex items-center p-3 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors cursor-pointer">
                   <i className='bx bx-play-circle mr-3 text-xl'></i>
                   <span>Start Dance Session</span>
-                </Link>
-                <Link href="/nutrition" className="flex items-center p-3 bg-secondary/10 text-secondary rounded-lg hover:bg-secondary/20 transition-colors">
+                </div>
+                <div className="flex items-center p-3 bg-secondary/10 text-secondary rounded-lg hover:bg-secondary/20 transition-colors cursor-pointer">
                   <i className='bx bx-food-menu mr-3 text-xl'></i>
                   <span>Log Meal</span>
-                </Link>
-                <Link href="/chatbot" className="flex items-center p-3 bg-accent/10 text-accent rounded-lg hover:bg-accent/20 transition-colors">
+                </div>
+                <div className="flex items-center p-3 bg-accent/10 text-accent rounded-lg hover:bg-accent/20 transition-colors cursor-pointer">
                   <i className='bx bx-message-rounded-dots mr-3 text-xl'></i>
                   <span>Ask AI Coach</span>
-                </Link>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -211,9 +220,9 @@ export default function Dashboard() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
               <WorkoutStatsCard />
               <CaloriesStatsCard 
-                consumed={user.caloriesConsumed} 
-                burned={user.caloriesBurned} 
-                goal={user.calorieGoal} 
+                consumed={displayUser.caloriesConsumed} 
+                burned={displayUser.caloriesBurned} 
+                goal={displayUser.calorieGoal} 
               />
               <WeightProgressCard />
             </div>

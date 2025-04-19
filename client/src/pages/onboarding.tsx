@@ -103,7 +103,15 @@ export default function Onboarding() {
         // For now, we're just using localStorage and context
         localStorage.setItem('beatburn-user', JSON.stringify(userProfile));
         
-        navigate("/dashboard");
+        // Show success message
+        alert("Profile created successfully! You can now scroll down to view other components.");
+        
+        // Reset form to allow more testing
+        form.reset();
+        setAnimateForm(true);
+        
+        // No need to navigate since we're showing all components on one page
+        // navigate("/dashboard");
       } catch (error) {
         console.error("Error creating user:", error);
       }
