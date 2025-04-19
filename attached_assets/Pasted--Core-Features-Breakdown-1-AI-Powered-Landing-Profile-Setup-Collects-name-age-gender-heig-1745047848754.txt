@@ -1,0 +1,121 @@
+🔧 Core Features Breakdown
+🎵 1. AI-Powered Landing & Profile Setup
+Collects name, age, gender, height, weight, fitness goals.
+
+Calculates BMI, BMR, and sets daily goals.
+
+Greets users with personalized messages using Gemini-like AI.
+
+🧠 2. Gemini-powered Chatbot
+Built using Gemini Pro (via Generative AI SDK or REST API).
+
+Capable of:
+
+Answering fitness & diet queries.
+
+Recommending dance sessions.
+
+Motivating users with daily affirmations.
+
+Giving personalized health advice.
+
+📷 3. YOLO-Powered Dance Move Tracker
+Uses YOLOv8 or YOLO-NAS for pose detection and movement tracking.
+
+Recognizes specific aerobics/dance styles (like Rumba, Zumba, Bollywood cardio, etc.).
+
+Gives real-time feedback on accuracy.
+
+Plays suitable music automatically.
+
+Tracks calories burned based on movement + BMI.
+
+🍽️ 4. Meal Calorie Scanner
+Two options:
+
+Image-based: Use YOLO or EfficientNet + food detection models.
+
+Text input: User inputs ingredients; AI gives calorie estimate using food database APIs (e.g., Edamam, Nutritionix).
+
+Output: Total calories, suggestions for improvement.
+
+📖 5. Soulful Recipes Menu
+Curated recipes based on:
+
+Health goals (weight loss, muscle gain, etc.)
+
+Time availability
+
+Ingredients at home
+
+Gemini-based meal planner can generate a weekly plan.
+
+Optional: Integration with a grocery list generator.
+
+📊 6. Dashboard & Analytics
+Weight loss progress tracker.
+
+Daily calorie intake/burn comparison.
+
+Visual graphs (matplotlib + React charts or Plotly).
+
+Session history and dance performance evaluation.
+
+🌐 Tech Stack Suggestion
+👨‍💻 Backend:
+Python + FastAPI: Super fast, async support.
+
+YOLOv8 with Ultralytics for real-time pose detection.
+
+OpenCV for video processing.
+
+Generative AI SDK (Gemini) for chatbot and recipes.
+
+SQLite or PostgreSQL for user profile & progress tracking.
+
+Nutritionix API for calorie/nutrient data (or train a lightweight model for offline use).
+
+💻 Frontend:
+React.js + Tailwind CSS
+
+Dashboard with charts (Recharts or Chart.js)
+
+Webcam interface for dance tracking
+
+Mobile responsive
+
+☁️ Deployment:
+Frontend: Vercel or Netlify
+
+Backend: Railway / Render / GCP App Engine
+
+YOLO Model: Host using Docker if needed
+
+🔄 Suggested User Flow
+Landing Page
+
+Enter profile → Avatar creation
+
+Set fitness goal → Choose dance style
+
+Daily Dashboard
+
+“Start My Session” → Opens webcam + music
+
+“Log My Meal” → Image/text upload
+
+Chat with “RhythmBot” for advice
+
+Recipe Planner
+
+Browse or auto-generate
+
+Get cooking instructions + calories
+
+Analytics
+
+Dance progress over time
+
+Weekly calorie chart
+
+Weight & BMI trendline
