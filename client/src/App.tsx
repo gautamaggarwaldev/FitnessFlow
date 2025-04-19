@@ -14,6 +14,8 @@ import { useUser } from "./contexts/user-context";
 
 function App() {
   const { user, loading } = useUser();
+  
+  console.log("App rendering with:", { user, loading });
 
   if (loading) {
     return (
@@ -31,7 +33,14 @@ function App() {
       <div className="flex min-h-screen flex-col">
         {user && <Navbar />}
         <main className="flex-1">
-          <Router />
+          <Switch>
+            <Route path="/" component={user ? Dashboard : Onboarding} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/dance" component={Dance} />
+            <Route path="/nutrition" component={Nutrition} />
+            <Route path="/chatbot" component={Chatbot} />
+            <Route component={NotFound} />
+          </Switch>
         </main>
         {user && (
           <>
@@ -42,21 +51,6 @@ function App() {
       </div>
       <Toaster />
     </TooltipProvider>
-  );
-}
-
-function Router() {
-  const { user } = useUser();
-  
-  return (
-    <Switch>
-      <Route path="/" component={user ? Dashboard : Onboarding} />
-      <Route path="/dashboard" component={Dashboard} />
-      <Route path="/dance" component={Dance} />
-      <Route path="/nutrition" component={Nutrition} />
-      <Route path="/chatbot" component={Chatbot} />
-      <Route component={NotFound} />
-    </Switch>
   );
 }
 
