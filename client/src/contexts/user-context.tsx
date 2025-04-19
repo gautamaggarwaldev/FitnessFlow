@@ -29,14 +29,21 @@ export function UserProvider({ children }: { children: ReactNode }) {
   // Load user from localStorage on mount
   useEffect(() => {
     try {
+      console.log('UserContext: Checking for stored user data');
       const storedUser = localStorage.getItem('beatburn-user');
+      
       if (storedUser) {
+        console.log('UserContext: Found stored user data, parsing');
         const parsedUser = JSON.parse(storedUser);
+        console.log('UserContext: Setting user state with', parsedUser);
         setUserState(parsedUser);
+      } else {
+        console.log('UserContext: No stored user data found');
       }
     } catch (e) {
-      console.error('Failed to parse stored user data:', e);
+      console.error('UserContext: Failed to parse stored user data:', e);
     } finally {
+      console.log('UserContext: Setting loading to false');
       setLoading(false);
     }
   }, []);
@@ -54,9 +61,15 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   const setUser = (newUser: User) => {
     try {
+      console.log('UserContext: Setting new user', newUser);
       setUserState(newUser);
+      
+      // Also update localStorage directly to ensure synchronization
+      localStorage.setItem('beatburn-user', JSON.stringify(newUser));
+      
+      console.log('UserContext: User set successfully');
     } catch (e) {
-      console.error('Error setting user:', e);
+      console.error('UserContext: Error setting user:', e);
     }
   };
 

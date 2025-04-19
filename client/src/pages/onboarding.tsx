@@ -74,6 +74,7 @@ export default function Onboarding() {
     const userProfile = {
       id: 1,
       username: data.username,
+      password: data.password, // In a real app, you would never store plain passwords in localStorage
       name: data.name,
       age: data.age,
       gender: data.gender,
@@ -88,13 +89,24 @@ export default function Onboarding() {
       caloriesConsumed: 0,
     };
 
+    console.log("Creating user profile:", userProfile);
+
     // Set animation to exit
     setAnimateForm(false);
     
     // Slight delay for animation
     setTimeout(() => {
-      setUser(userProfile);
-      navigate("/dashboard");
+      try {
+        setUser(userProfile);
+        
+        // In a real application, you would call the API to create a user here
+        // For now, we're just using localStorage and context
+        localStorage.setItem('beatburn-user', JSON.stringify(userProfile));
+        
+        navigate("/dashboard");
+      } catch (error) {
+        console.error("Error creating user:", error);
+      }
     }, 300);
   };
 
