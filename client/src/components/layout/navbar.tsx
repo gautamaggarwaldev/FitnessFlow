@@ -38,7 +38,7 @@ export default function Navbar() {
                 key={link.href} 
                 href={link.href}
                 className={`font-medium transition-colors ${
-                  location === link.href ? "text-primary" : "text-foreground hover:text-primary"
+                  location === link.href ? "text-accent" : "text-primary hover:text-accent"
                 }`}
               >
                 {link.label}

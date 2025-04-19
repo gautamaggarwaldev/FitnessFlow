@@ -14,7 +14,7 @@ export default function ActivityTimeline({ activities }: ActivityTimelineProps) 
   };
 
   const activityColors = {
-    workout: 'bg-primary/20 text-primary',
+    workout: 'bg-primary/20 text-accent',
     meal: 'bg-secondary/20 text-secondary',
     chat: 'bg-accent/20 text-accent'
   };
@@ -24,7 +24,7 @@ export default function ActivityTimeline({ activities }: ActivityTimelineProps) 
       variants={listVariants}
       initial="initial"
       animate="animate"
-      className="bg-white rounded-2xl shadow-md p-6 mb-8"
+      className="bg-white rounded-2xl shadow-md p-6 mb-8 text-secondary"
     >
       <h3 className="font-medium mb-4">Recent Activity</h3>
       <motion.div variants={listVariants} className="space-y-6">
@@ -42,7 +42,7 @@ export default function ActivityTimeline({ activities }: ActivityTimelineProps) 
             <div>
               <div className="flex justify-between">
                 <h4 className="font-medium">{activity.title}</h4>
-                <span className="text-xs text-neutral-500">{activity.time}</span>
+                <span className="text-xs text-neutral-500 ml-10 mt-2 ">{activity.time}</span>
               </div>
               <p className="text-sm text-neutral-500 mt-1">{activity.description}</p>
               
@@ -77,7 +77,7 @@ export default function ActivityTimeline({ activities }: ActivityTimelineProps) 
               
               {activity.type === 'chat' && (
                 <div className="mt-2">
-                  <a href="/chatbot" className="text-primary text-xs font-medium flex items-center">
+                  <a href="/chatbot" className="text-accent text-xs font-medium flex items-center">
                     <span>Continue Conversation</span>
                     <i className='bx bx-right-arrow-alt ml-1'></i>
                   </a>

@@ -18,7 +18,7 @@ export default function MobileNav() {
             key={link.href}
             href={link.href}
             className={`flex flex-col items-center py-3 ${
-              location === link.href ? "text-primary" : "text-neutral-dark"
+              location === link.href ? "text-accent" : "text-neutral-dark"
             }`}
           >
             <i className={`bx bx-${link.icon} text-2xl`}></i>

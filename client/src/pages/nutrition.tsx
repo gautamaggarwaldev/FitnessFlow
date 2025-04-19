@@ -121,13 +121,13 @@ export default function Nutrition() {
       className="py-20 bg-neutral-100"
     >
       <div className="container mx-auto px-4 pt-16">
-        <h2 className="text-2xl font-poppins font-bold mb-2">Nutrition & Recipes</h2>
+        <h2 className="text-2xl font-poppins font-bold mb-2 text-secondary">Nutrition & Recipes</h2>
         <p className="text-neutral-600 mb-10">Track your meals and discover healthy recipe ideas tailored to your goals</p>
         
         {/* Meal Tracking Tabs */}
         <motion.div 
           variants={listItemVariants}
-          className="bg-white rounded-2xl shadow-md mb-12 overflow-hidden"
+          className="bg-white rounded-2xl shadow-md mb-12 overflow-hidden text-secondary"
         >
           <Tabs defaultValue="log">
             <TabsList className="border-b w-full justify-start rounded-none p-0 h-auto">

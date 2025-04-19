@@ -19,10 +19,22 @@ const formSchema = z.object({
   username: z.string().min(3, { message: "Username must be at least 3 characters" }),
   password: z.string().min(6, { message: "Password must be at least 6 characters" }),
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
-  age: z.coerce.number().min(16, { message: "You must be at least 16 years old" }).max(100),
+  age: z.coerce
+    .number()
+    .nonnegative({ message: "Age cannot be negative" })
+    .min(16, { message: "You must be at least 16 years old" })
+    .max(100),
   gender: z.enum(["Male", "Female", "Non-binary"]),
-  height: z.coerce.number().min(100, { message: "Height must be at least 100 cm" }).max(250),
-  weight: z.coerce.number().min(30, { message: "Weight must be at least 30 kg" }).max(250),
+  height: z.coerce
+    .number()
+    .nonnegative({ message: "Height cannot be negative" })
+    .min(100, { message: "Height must be at least 100 cm" })
+    .max(250),
+  weight: z.coerce
+    .number()
+    .nonnegative({ message: "Weight cannot be negative" })
+    .min(30, { message: "Weight must be at least 30 kg" })
+    .max(250),
   goal: z.string().min(1, { message: "Please select a fitness goal" }),
   danceStyle: z.string().min(1, { message: "Please select a dance style" }),
 });
@@ -143,7 +155,7 @@ export default function Onboarding() {
 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 text-accent gap-4">
                   <motion.div
                     variants={cardVariants}
                     initial="initial"
@@ -157,7 +169,7 @@ export default function Onboarding() {
                         <FormItem>
                           <FormLabel>Username</FormLabel>
                           <FormControl>
-                            <Input placeholder="username123" {...field} />
+                            <Input className='bg-gray-300 text-black ' placeholder="username123" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -176,9 +188,9 @@ export default function Onboarding() {
                       name="password"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Password</FormLabel>
+                          <FormLabel className='text-accent'>Password</FormLabel>
                           <FormControl>
-                            <Input type="password" placeholder="••••••" {...field} />
+                            <Input className='bg-gray-300 text-black' type="password" placeholder="••••••" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -198,9 +210,9 @@ export default function Onboarding() {
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Your Name</FormLabel>
+                        <FormLabel className='text-accent' >Your Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="John Doe" {...field} />
+                          <Input className='bg-gray-300 text-black'placeholder="John Doe" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -208,7 +220,7 @@ export default function Onboarding() {
                   />
                 </motion.div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 text- accent gap-4">
                   <motion.div
                     variants={cardVariants}
                     initial="initial"
@@ -220,9 +232,9 @@ export default function Onboarding() {
                       name="age"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Age</FormLabel>
+                          <FormLabel className='text-accent'>Age</FormLabel>
                           <FormControl>
-                            <Input type="number" placeholder="25" {...field} />
+                            <Input className='' type="number" placeholder="25" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -241,14 +253,15 @@ export default function Onboarding() {
                       name="gender"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Gender</FormLabel>
+                          <FormLabel className='text-accent'>Gender</FormLabel>
                           <Select
+                          
                             onValueChange={field.onChange}
                             defaultValue={field.value}
                           >
-                            <FormControl>
+                            <FormControl >
                               <SelectTrigger>
-                                <SelectValue placeholder="Select" />
+                                <SelectValue className='bg-gray-300 text-black' placeholder="Select" />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
@@ -276,7 +289,7 @@ export default function Onboarding() {
                       name="height"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Height (cm)</FormLabel>
+                          <FormLabel className='text-accent'>Height (cm)</FormLabel>
                           <FormControl>
                             <Input type="number" placeholder="175" {...field} />
                           </FormControl>
@@ -297,7 +310,7 @@ export default function Onboarding() {
                       name="weight"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Weight (kg)</FormLabel>
+                          <FormLabel className='text-accent'>Weight (kg)</FormLabel>
                           <FormControl>
                             <Input type="number" placeholder="70" {...field} />
                           </FormControl>
@@ -319,7 +332,7 @@ export default function Onboarding() {
                     name="goal"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Fitness Goal</FormLabel>
+                        <FormLabel className='text-accent'>Fitness Goal</FormLabel>
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
@@ -354,7 +367,7 @@ export default function Onboarding() {
                     name="danceStyle"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Preferred Dance Style</FormLabel>
+                        <FormLabel className='text-accent'>Preferred Dance Style</FormLabel>
                         <FormControl>
                           <RadioGroup
                             onValueChange={field.onChange}
@@ -370,7 +383,7 @@ export default function Onboarding() {
                                 />
                                 <label
                                   htmlFor={style.toLowerCase()}
-                                  className="block text-center p-2 border rounded-lg peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition cursor-pointer text-sm"
+                                  className="block text-center p-2 border rounded-lg peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent transition cursor-pointer text-sm text-accent hover:bg-accent/10"
                                 >
                                   {style}
                                 </label>

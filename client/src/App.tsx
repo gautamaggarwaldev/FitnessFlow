@@ -38,7 +38,7 @@ function App() {
             <p className="text-xl">Dance your way to fitness with AI-powered tracking, personalized nutrition, and more!</p>
           </div>
           
-          <h2 className="text-2xl font-bold mt-10 mb-6 text-center">1. Get Started - User Onboarding</h2>
+          <h2 className="text-2xl text-accent font-bold mt-10 mb-6 text-center"> Get Started With  <span className="text-primary">Beat</span> Burn</h2>
           <div className="mb-16 rounded-xl shadow-lg">
             <Onboarding />
           </div>
@@ -53,7 +53,7 @@ function App() {
             <Dance />
           </div>
           
-          <h2 className="text-2xl font-bold mt-10 mb-6 text-center">4. Nutrition Planning</h2>
+          <h2 className="text-2xl font-bold mt-10 mb-6 text-center text-primary">4. Nutrition Planning</h2>
           <div className="mb-16 rounded-xl shadow-lg">
             <Nutrition />
           </div>

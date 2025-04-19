@@ -149,12 +149,12 @@ export default function Dashboard() {
               <div className="flex items-center space-x-4 mb-6">
                 <Avatar className="w-16 h-16 border-2 border-primary">
                   <AvatarImage src={displayUser.profileImage} />
-                  <AvatarFallback className="bg-primary/20 text-primary text-xl">
+                  <AvatarFallback className="bg-primary/20 text-accent text-xl">
                     {getInitials(displayUser.name)}
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <h3 className="font-poppins font-bold text-lg">{displayUser.name}</h3>
+                  <h3 className="font-poppins text-accent font-bold text-lg">{displayUser.name}</h3>
                   <p className="text-neutral-500 text-sm">{displayUser.goal}</p>
                 </div>
               </div>
@@ -162,27 +162,27 @@ export default function Dashboard() {
               {/* Stats Summary */}
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm">BMI</span>
-                  <span className="font-medium">{displayUser.bmi}</span>
+                  <span className="text-sm text-accent">BMI</span>
+                  <span className="font-medium text-secondary">{displayUser.bmi}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm">Daily Calorie Goal</span>
-                  <span className="font-medium">{formatNumber(displayUser.calorieGoal)} kcal</span>
+                  <span className="text-sm text-accent">Daily Calorie Goal</span>
+                  <span className="font-medium text-secondary">{formatNumber(displayUser.calorieGoal)} kcal</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm">Burned Today</span>
+                  <span className="text-sm text-accent">Burned Today</span>
                   <span className="font-medium text-secondary">{formatNumber(displayUser.caloriesBurned)} kcal</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm">Consumed Today</span>
+                  <span className="text-sm text-accent">Consumed Today</span>
                   <span className="font-medium text-primary">{formatNumber(displayUser.caloriesConsumed)} kcal</span>
                 </div>
               </div>
               
               <div className="mt-6 pt-6 border-t">
-                <h4 className="font-medium mb-3">Today's Goal</h4>
+                <h4 className="font-medium mb-3 text-accent">Today's Goal</h4>
                 <Progress value={progress} className="h-3" />
-                <div className="flex justify-between text-sm mt-2">
+                <div className="flex justify-between text-sm mt-2 text-secondary">
                   <span>0 kcal</span>
                   <span>{displayUser.caloriesBurned}/900 kcal</span>
                 </div>
@@ -194,7 +194,7 @@ export default function Dashboard() {
               variants={cardVariants}
               className="bg-white rounded-2xl shadow-md p-6"
             >
-              <h3 className="font-medium mb-4">Quick Actions</h3>
+              <h3 className="font-medium mb-4 text-secondary">Quick Actions</h3>
               <div className="space-y-3">
                 <div className="flex items-center p-3 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors cursor-pointer">
                   <i className='bx bx-play-circle mr-3 text-xl'></i>
@@ -214,7 +214,7 @@ export default function Dashboard() {
           
           {/* Main Dashboard Content */}
           <div className="w-full md:w-3/4">
-            <h2 className="text-2xl font-poppins font-bold mb-6">Your Fitness Dashboard</h2>
+            <h2 className="text-2xl font-poppins font-bold mb-6 text-secondary">Your Fitness Dashboard</h2>
             
             {/* Stats Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">

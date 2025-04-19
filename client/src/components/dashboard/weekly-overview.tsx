@@ -52,7 +52,7 @@ export default function WeeklyOverview({
       animate="animate"
       className="bg-white rounded-2xl shadow-md p-6"
     >
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-6 text-secondary">
         <h3 className="font-medium">Weekly Overview</h3>
         <div className="flex space-x-2">
           {['calories', 'workouts', 'steps'].map((type) => (

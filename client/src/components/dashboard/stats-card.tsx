@@ -35,10 +35,10 @@ export default function StatsCard({
 // Workout Stats Component
 export function WorkoutStatsCard({ workouts = 4, target = 5 }) {
   return (
-    <StatsCard title="Workouts" timeframe="This Week">
-      <div className="flex justify-between items-end">
+    <StatsCard className=' text-accent'title="Workouts" timeframe="This Week">
+      <div className="flex justify-between items-end text-secondary">
         <div>
-          <span className="block text-3xl font-bold">{workouts}</span>
+          <span className="block text-3xl font-bold text-secondary">{workouts}</span>
           <span className="text-xs text-neutral-500">of {target} target</span>
         </div>
         <div className="h-16 flex items-end space-x-1">
@@ -67,7 +67,7 @@ export function CaloriesStatsCard({ consumed = 1230, burned = 547, goal = 1800 }
   const percentage = Math.min(100, Math.round((consumed / goal) * 100));
   
   return (
-    <StatsCard title="Calories" timeframe="Today">
+    <StatsCard className='text-secondary'title="Calories" timeframe="Today">
       <div className="flex items-center justify-between">
         <div className="relative w-20 h-20">
           <svg viewBox="0 0 36 36" className="w-full h-full">
@@ -115,7 +115,7 @@ export function CaloriesStatsCard({ consumed = 1230, burned = 547, goal = 1800 }
 // Weight Progress Component
 export function WeightProgressCard({ progress = -2.5 }) {
   return (
-    <StatsCard title="Weight Progress" timeframe="30 Days">
+    <StatsCard className='text-secondary' title="Weight Progress" timeframe="30 Days">
       <div className="h-24 flex items-end relative">
         <div className="chart-container rounded-md w-full h-full relative">
           <svg className="w-full h-full absolute top-0 left-0" viewBox="0 0 100 50">

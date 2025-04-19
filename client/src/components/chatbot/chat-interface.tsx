@@ -117,7 +117,7 @@ export default function ChatInterface({ messages, onSendMessage }: ChatInterface
               </div>
               
               {message.sender === 'user' && (
-                <Avatar className="w-8 h-8 ml-3 flex-shrink-0 bg-primary/20 text-primary">
+                <Avatar className="w-8 h-8 ml-3 flex-shrink-0 bg-primary/20 text-accent">
                   <AvatarFallback>{getInitials(user?.name)}</AvatarFallback>
                   <AvatarImage src={user?.profileImage} />
                 </Avatar>

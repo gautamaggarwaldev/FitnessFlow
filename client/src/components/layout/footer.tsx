@@ -2,7 +2,7 @@ import { Link } from "wouter";
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-dark text-white py-16">
+    <footer className="bg-black text-white py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
@@ -17,7 +17,7 @@ export default function Footer() {
                   href="#" 
                   className="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center hover:bg-primary transition-colors"
                 >
-                  <i className={`bx bxl-${social}`}></i>
+                  <i className={`bx bxl-${social} text-xl`}></i>
                 </a>
               ))}
             </div>
@@ -47,7 +47,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 "About Us",
-                "Careers",
+                
                 "Press Kit",
                 "Contact",
                 "Blog"
@@ -79,7 +79,7 @@ export default function Footer() {
         
         <div className="border-t border-neutral-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-neutral-400 text-sm mb-4 md:mb-0">
-            © 2023 BeatBurn. All rights reserved.
+            © 2025 BeatBurn. All rights reserved.
           </div>
           <div className="flex space-x-6 text-sm text-neutral-400">
             {["Privacy Policy", "Terms of Service", "Cookie Settings"].map(item => (
