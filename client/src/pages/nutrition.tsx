@@ -210,9 +210,9 @@ export default function Nutrition() {
               <div className="md:w-2/3 p-8 md:p-10">
                 <h3 className="text-white font-poppins font-bold text-2xl mb-3">Get Your Personal Meal Plan</h3>
                 <p className="text-white/80 mb-6">Let our AI create a customized weekly meal plan based on your fitness goals, preferences, and available ingredients.</p>
-                <Button className="bg-white text-primary hover:bg-neutral-100">
-                  <i className='bx bx-calendar-star mr-2'></i>
-                  <span>Generate My Meal Plan</span>
+                <Button className="bg-white text-primary hover:bg-[#df3a47]">
+                  <i className='bx bx-calendar-star mr-2 text-white'></i>
+                  <span className="text-white">Generate My Meal Plan</span>
                 </Button>
               </div>
               <div className="md:w-1/3 hidden md:block relative">
